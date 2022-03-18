@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:tns="http://soap.sri.s23456/cars"
+           targetNamespace="http://soap.sri.s23456/cars"
+           elementFormDefault="qualified">
+    <xs:complexType name="CarDto">
+        <xs:sequence>
+            <xs:element name="id" type="xs:decimal" minOccurs="0"/>
+            <xs:element name="brand" type="xs:string"/>
+            <xs:element name="color" type="xs:string"/>
+            <xs:element name="year" type="xs:gYear"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="getCarsRequest">
+        <xs:complexType>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="getCarsResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="cars" type="tns:CarDto" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="getCarByIdRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="carId" type="xs:decimal"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="getCarByIdResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="car" type="tns:CarDto" minOccurs="0" maxOccurs="1"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="addCarRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="car" type="tns:CarDto"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="addCarResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="carId" type="xs:decimal"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="getCarNumberByBrandRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="carBrand" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="getCarNumberByBrandResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="carNumber" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="getCarsByColorRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="carColor" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="getCarsByColorResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="cars" type="tns:CarDto" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
